@@ -36,12 +36,12 @@ T* RingBuffer<T, size, alloc_t>::readBuffer() {
 template <typename T, size_t size, typename alloc_t>
 void RingBuffer<T, size, alloc_t>::writeBuffer(T *data) {
     if (count == size) {
-        m_allocator.deallocate(elems[head], 1); // Freigabe des ältesten Elements mit dem Allocator
+        m_allocator.deallocate(elems[head], 1); // Freigabe des aeltesten Elements mit dem Allocator
         head = (head + 1) % size;
     } else {
         ++count;
     }
-    elems[(head + count - 1) % size] = data; // Hinzufügen des neuen Elements an das Ende
+    elems[(head + count - 1) % size] = data; // Hinzufuegen des neuen Elements an das Ende
 }
 
 // displayStatus-Methode
